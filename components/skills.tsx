@@ -1,53 +1,19 @@
+"use client";
+
+import { skills } from "@/lib/data";
+import { fadeInAnimationVariants, useSectionInView } from "@/lib/hooks";
 import React from "react";
+import { motion } from "framer-motion";
 
-type Props = {};
+export const Skills = () => {
+  const { ref } = useSectionInView("Skills");
 
-const skills = [
-  {
-    name: "Programming Languages",
-    items: ["JavaScript", "TypeScript", "HTML", "CSS"],
-  },
-  {
-    name: "Frameworks & Libraries",
-    items: [
-      "React",
-      "Next.js",
-      "Tailwind CSS",
-      "TanStack",
-      "Astro",
-      "React-Hook-Form",
-    ],
-  },
-  {
-    name: "Tools & Workflows",
-    items: [
-      "Git",
-      "GitHub",
-      "Figma",
-      "Eslint",
-      "Prettier",
-      "Jira",
-      "Bitbucket",
-      "Vite",
-    ],
-  },
-  {
-    name: "Soft Skills",
-    items: ["Problem-solving", "Teamwork", "Communication", "Adaptability"],
-  },
-  {
-    name: "Responsive Design",
-    items: [
-      "Mobile-first approach",
-      "Cross-browser compatibility",
-      "Accessibility",
-    ],
-  },
-];
-
-export const Skills = (props: Props) => {
   return (
-    <section id="skills" className="w-full py-12 md:py-24 lg:py-28">
+    <section
+      ref={ref}
+      id="skills"
+      className="w-full py-12 md:py-24 lg:py-28 scroll-mt-28"
+    >
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
@@ -62,11 +28,26 @@ export const Skills = (props: Props) => {
           </div>
         </div>
         <div className="mx-auto grid max-w-5xl items-center gap-6 pt-12 lg:grid-cols-3 lg:gap-12">
-          {skills.map((skill) => (
-            <div key={skill.name} className="grid gap-1">
-              <h3 className="text-xl font-bold">{skill.name}</h3>
-              <p className="text-muted-foreground">{skill.items.join(", ")}</p>
-            </div>
+          {skills.map((skill, index) => (
+            <motion.li
+              className="grid gap-1"
+              key={skill.name}
+              variants={fadeInAnimationVariants}
+              initial="initial"
+              whileInView="animate"
+              viewport={{
+                once: false,
+              }}
+              custom={index}
+            >
+              <div className="flex items-center gap-2">
+                <div className="bg-primary rounded-full w-8 h-8 flex items-center justify-center">
+                  {skill.icon}
+                </div>
+                <h3 className="text-lg font-bold">{skill.name}</h3>
+              </div>
+              <p className="text-muted-foreground"> {skill.items.join(", ")}</p>
+            </motion.li>
           ))}
         </div>
       </div>

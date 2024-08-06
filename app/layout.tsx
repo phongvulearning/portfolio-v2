@@ -2,6 +2,9 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { IBM_Plex_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "sonner";
+import ActiveSectionContextProvider from "@/context/active-section-context";
+import { Navbar } from "@/components/navbar";
 
 const fontHeading = IBM_Plex_Mono({
   subsets: ["latin"],
@@ -19,7 +22,7 @@ const fontBody = IBM_Plex_Mono({
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="!scroll-smooth">
       <body
         className={cn("antialiased", fontHeading.className, fontBody.className)}
       >
@@ -29,8 +32,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <ActiveSectionContextProvider>
+            <Navbar />
+            {children}
+          </ActiveSectionContextProvider>
         </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );
