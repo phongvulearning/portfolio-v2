@@ -24,7 +24,13 @@ export const Project = ({ project }: Props) => {
   const scaleProgess = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
   const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 
-  const { technologies, title, desciption, features, challenges } = project;
+  const {
+    technologies,
+    title,
+    desciption,
+    features,
+    challenges = "",
+  } = project;
 
   return (
     <motion.div
@@ -52,7 +58,9 @@ export const Project = ({ project }: Props) => {
             </div>
             <div>
               <h3 className="text-lg font-bold">Challenges</h3>
-              <p className="text-muted-foreground">{challenges}</p>
+              {challenges && (
+                <p className="text-muted-foreground">{challenges}</p>
+              )}
             </div>
           </div>
         </CardContent>
