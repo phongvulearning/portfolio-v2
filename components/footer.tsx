@@ -8,11 +8,11 @@ import { socials } from "@/lib/data";
 export const Footer = () => {
   return (
     <footer className="py-6 px-4 md:px-6 border-t bg-muted overflow-hidden">
-      <div className="container mx-auto flex items-center justify-between">
+      <div className="container mx-auto flex items-center justify-between flex-col lg:flex-row gap-2">
         <motion.p
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="text-sm text-muted-foreground"
+          className="text-sm text-muted-foreground text-center lg:text-left"
         >
           &copy; 2024 Phong Vu. All rights reserved.
         </motion.p>
