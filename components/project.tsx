@@ -59,12 +59,14 @@ export const Project = ({ project }: Props) => {
               <h3 className="text-lg font-bold">Technologies Used</h3>
               <p className="text-muted-foreground">{technologies.join(", ")}</p>
             </div>
-            <div>
-              <h3 className="text-lg font-bold">Challenges</h3>
-              {challenges && (
-                <p className="text-muted-foreground">{challenges}</p>
-              )}
-            </div>
+            {challenges && (
+              <div>
+                <h3 className="text-lg font-bold">Challenges</h3>
+                {challenges && (
+                  <p className="text-muted-foreground">{challenges}</p>
+                )}
+              </div>
+            )}{" "}
           </div>
         </CardContent>
       </Card>

@@ -7,6 +7,6 @@ export type IProject = {
   desciption: string;
   features: Array<string>;
   technologies: Array<string>;
-  challenges: string;
+  challenges?: string;
   href: string;
 };
