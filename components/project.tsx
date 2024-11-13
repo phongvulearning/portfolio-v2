@@ -37,7 +37,10 @@ export const Project = ({ project }: Props) => {
       style={{ scale: scaleProgess, opacity: opacityProgess }}
       ref={ref}
     >
-      <Card>
+      <Card
+        onClick={() => window.open(project.href, "_blank")}
+        className="cursor-pointer"
+      >
         <CardHeader>
           <CardTitle>{title}</CardTitle>
           <CardDescription>{desciption}</CardDescription>

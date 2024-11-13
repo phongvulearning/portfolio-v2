@@ -8,4 +8,5 @@ export type IProject = {
   features: Array<string>;
   technologies: Array<string>;
   challenges: string;
+  href: string;
 };
